@@ -9,3 +9,59 @@ datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
 }
+
+model Client {
+  client_id   Int     @id @default(autoincrement())
+  title       String  @db.VarChar(255)
+  name        String  @db.VarChar(255)
+  surname     String  @db.VarChar(255)
+  email       String  @db.VarChar(255)
+  address     String  @db.VarChar(255)
+  telephone   String  @db.VarChar(255)
+  login       String  @db.VarChar(255)
+  password    String  @db.VarChar(255)
+  type        Boolean @default(false)
+  status_code Boolean @default(false)
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+ 
+}
+ 
+model Account {
+  account_id        Int     @id @default(autoincrement())
+  client_id         Int 
+  account_number    Int  
+  account_balance   Int   
+  status_code       Boolean
+  createdAt         DateTime  @default(now())
+  updatedAt         DateTime  @updatedAt
+ 
+ 
+}
+
+model Transaction {
+  transaction_id    Int     @id @default(autoincrement())
+  from_account_id   Int
+  to_account_id     Int
+  amount           Int
+  type              String
+  initiated_by      Int
+  status_code       Boolean
+  createdAt         DateTime  @default(now())
+  updatedAt         DateTime  @updatedAt
+   
+}
+
+ model Transaction_details {
+  id                Int    @id @default(autoincrement())
+  transaction_id    Int
+  account_id        Int
+  amount            Int
+  type              String
+  credit_date       DateTime  @default(now())
+  status_code       Boolean
+  createdAt         DateTime  @default(now())
+  updatedAt         DateTime  @updatedAt
+ 
+}
+
