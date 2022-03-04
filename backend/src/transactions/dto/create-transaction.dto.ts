@@ -4,5 +4,5 @@ export class CreateTransactionDto {
   amount: number;
   type: string;
   initiated_by: number;
-  status_code: boolean;
+  status_code: boolean = false;
 }

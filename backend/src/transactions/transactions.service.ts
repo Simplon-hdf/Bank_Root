@@ -51,8 +51,8 @@ export class TransactionsService {
 
   async update(
     id: number,
-    updateTransactionDto: Transaction,
-    // updateTransactionDto: UpdateTransactionDto,
+    // updateTransactionDto: Transaction,
+    updateTransactionDto: UpdateTransactionDto,
   ): Promise<Transaction> {
     // return `This action updates a #${id} transaction`;
     return this.prisma.transaction.update({
