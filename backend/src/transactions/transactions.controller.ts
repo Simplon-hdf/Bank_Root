@@ -8,8 +8,14 @@ import {
   Delete,
 } from '@nestjs/common';
 import { TransactionsService } from './transactions.service';
-import { CreateTransactionDto } from './dto/create-transaction.dto';
-import { UpdateTransactionDto } from './dto/update-transaction.dto';
+import {
+  CreateTransactionDto,
+  CreateDetailDto,
+} from './dto/create-transaction.dto';
+import {
+  UpdateTransactionDto,
+  UpdateDetailDto,
+} from './dto/update-transaction.dto';
 
 @Controller('transactions')
 export class TransactionsController {

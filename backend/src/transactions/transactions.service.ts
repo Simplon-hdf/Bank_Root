@@ -1,8 +1,14 @@
 import { Injectable } from '@nestjs/common';
-import { CreateTransactionDto } from './dto/create-transaction.dto';
-import { UpdateTransactionDto } from './dto/update-transaction.dto';
+import {
+  CreateTransactionDto,
+  CreateDetailDto,
+} from './dto/create-transaction.dto';
+import {
+  UpdateTransactionDto,
+  UpdateDetailDto,
+} from './dto/update-transaction.dto';
 import { PrismaService } from '../prisma.service';
-import { Client, Transaction, Prisma } from '@prisma/client';
+import { Transaction, Transaction_details, Prisma } from '@prisma/client';
 
 @Injectable()
 export class TransactionsService {
@@ -15,6 +21,7 @@ export class TransactionsService {
   async findAll(): Promise<Transaction[]> {
     // return `This action returns all transactions`;
 
+    /*
     const v = await this.prisma.client.create({
       data: {
         title: 'Mister',
@@ -36,8 +43,9 @@ export class TransactionsService {
         status_code: false,
       },
     });
-
+    
     console.log('here three', v, v2);
+    */
 
     return this.prisma.transaction.findMany();
   }
