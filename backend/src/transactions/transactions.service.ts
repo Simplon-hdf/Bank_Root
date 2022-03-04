@@ -14,8 +14,31 @@ import { Transaction, Transaction_details, Prisma } from '@prisma/client';
 export class TransactionsService {
   constructor(private prisma: PrismaService) {}
 
-  create(createTransactionDto: CreateTransactionDto) {
-    return 'This action adds a new transaction';
+  async create(
+    createTransactionDto: CreateTransactionDto,
+  ): Promise<Transaction> {
+    // console.log(':::::\n', createTransactionDto, '\n:::::');
+
+    const transaction = await this.prisma.transaction.create({
+      data: createTransactionDto,
+    });
+    // console.log(':::::\n', transaction, '\n:::::');
+
+    // Add detail(s) about transaction
+    const createDetailDto: CreateDetailDto = {
+      transaction_id: transaction.transaction_id,
+      account_id: transaction.from_account_id,
+      amount: transaction.amount,
+      type: transaction.type,
+      status_code: transaction.status_code,
+    };
+
+    const detail = await this.prisma.transaction_details.create({
+      data: createDetailDto,
+    });
+    // console.log(':::::\n', detail, '\n:::::');
+
+    return transaction;
   }
 
   async findAll(): Promise<Transaction[]> {
