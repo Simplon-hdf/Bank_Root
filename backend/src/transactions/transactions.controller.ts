@@ -36,6 +36,11 @@ export class TransactionsController {
     return this.transactionsService.findOne(+id);
   }
 
+  @Get(':id/details')
+  findOneDetails(@Param('id') id: string) {
+    return this.transactionsService.findOneDetails(+id);
+  }
+
   @Patch(':id')
   update(
     @Param('id') id: string,

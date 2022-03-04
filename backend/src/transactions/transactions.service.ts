@@ -79,6 +79,12 @@ export class TransactionsService {
       where: { transaction_id: id },
     });
   }
+  async findOneDetails(id: number): Promise<Transaction_details[]> {
+    // return `This action returns a #${id} transaction`;
+    return this.prisma.transaction_details.findMany({
+      where: { transaction_id: id },
+    });
+  }
 
   async update(
     id: number,
