@@ -21,5 +21,20 @@ type cl = {
 // info, les comptes associés
 // p-e aussi les transactions les plus récentes ?
 export default function ClientDetail() {
+	const [clients, setClients] = useState<cl[]>([]);
+	const [error, setError] = useState(null);
+
+	useEffect(() => {
+        fetch("http://localhost:5000/clients")
+            .then( (res) => res.json())
+            .then( (result) => {
+                console.log(result);
+                
+                setClients(result)
+            },
+
+            (error) => setError(error));
+    }, [])
+
 	return <section>ClientDetail</section>;
 }
