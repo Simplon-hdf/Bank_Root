@@ -85,7 +85,9 @@ export class TransactionsService {
     });
   }
 
-  remove(id: number) {
-    return `This action removes a #${id} transaction`;
+  async remove(id: number) {
+    return this.prisma.transaction.delete({
+      where: { transaction_id: id },
+    });
   }
 }
