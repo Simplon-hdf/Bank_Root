@@ -4,5 +4,5 @@ import React from "react";
 // la "balance", etc
 // les transactions du compte*
 export default function AccountDetail() {
-	return <div>AccountDetail</div>;
+	return <section>AccountDetail</section>;
 }

@@ -4,5 +4,5 @@ import React from "react";
 // info, les comptes associés
 // p-e aussi les transactions les plus récentes ?
 export default function ClientDetail() {
-	return <div>ClientDetail</div>;
+	return <section>ClientDetail</section>;
 }
