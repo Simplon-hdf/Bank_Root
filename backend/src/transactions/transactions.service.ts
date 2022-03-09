@@ -24,8 +24,8 @@ export class TransactionsService {
     });
     // console.log(':::::\n', transaction, '\n:::::');
 
-    // Add detail(s) about transaction
-    for (let i = 0; i < 2; i++) {
+      // Add detail(s) about transaction
+      for (let i = 0; i < 2; i++) {
       const createDetailDto: CreateDetailDto = {
         transaction_id: transaction.transaction_id,
         account_id:

@@ -10,9 +10,9 @@ export class AccountsService {
 
 
    async create(createAccountDto: CreateAccountDto) {
-     console.log(createAccountDto);
+     
      const insert= await this.prismaService.account.create({ data: createAccountDto});
-
+ 
     return insert ;
   } 
 
