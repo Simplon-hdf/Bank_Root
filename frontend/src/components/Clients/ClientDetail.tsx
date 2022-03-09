@@ -1,28 +1,11 @@
 import React, {useEffect, useState} from "react";
-import {isTemplateSpan} from "typescript";
-import Clients from "./Clients";
-
-type cl = {
-	client_id: number;
-	title: string;
-	name: string;
-	surname: string;
-	email: string;
-	address: string;
-	telephone: string;
-	login: string;
-	password: string;
-	type: boolean;
-	status_code: boolean;
-	createdAt: Date;
-	updatedAt: Date;
-};
+import {typeClient} from "../../Utilities/types";
 
 // Affichage detail d'un client
 // info, les comptes associés
 // p-e aussi les transactions les plus récentes ?
 export default function ClientDetail() {
-	const [clients, setClients] = useState<cl[]>([]);
+	const [clients, setClients] = useState<typeClient[]>([]);
 	const [error, setError] = useState(null);
 
 	useEffect(() => {
