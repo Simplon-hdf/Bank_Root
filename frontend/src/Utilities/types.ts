@@ -27,11 +27,12 @@ export type typeClient = {
 };
 
 export type typeAccount = {
-	account_id:	number;
-    client_id: string;
-    account_number: 	string;
-    account_balance: string;
-    status_code: boolean;
-    createdAt: Date;
-    updatedAt: Date;
+	account_id: number;
+	client_id: number;
+	account_number: number;
+	account_balance: number;
+	type: boolean;
+	status_code: boolean;
+	createdAt: Date;
+	updatedAt: Date;
 };
