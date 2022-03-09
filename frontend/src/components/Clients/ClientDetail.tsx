@@ -38,22 +38,55 @@ export default function ClientDetail() {
 
 
     if(error) {
-        return <section>
+        return <section>           
             ERROR: {JSON.stringify(error)}
         </section>
     } else {
         return <div>
+            <h3> Clients </h3>
             {clients.map((client) => (
-                <article key={client.client_id}>
-                    {client.title}
-                    {client.name}
-                    {client.surname}
-                    {client.email}
-                    {client.address}
-                    {client.telephone}
-                    {client.login}
-                    {client.password}
-                </article>
+                <table key={client.client_id}>
+                    <tr>
+                        <td> 
+                            <b>Civilité :</b> {client.title}
+                        </td>
+                    </tr>
+                    <tr> 
+                        <td>
+                            <b>Nom :</b> {client.name}
+                        </td>
+                    </tr>    
+                    <tr> 
+                        <td>
+                            <b>Prénom :</b> {client.surname}
+                        </td>
+                    </tr> 
+                    <tr> 
+                        <td>
+                            <b>Email :</b> {client.email}
+                        </td>
+                    </tr> 
+                    <tr> 
+                        <td>
+                            <b>Adresse :</b> {client.address}
+                        </td>
+                    </tr> 
+                    <tr> 
+                        <td>
+                            <b>Téléphone :</b> {client.telephone}
+                        </td>
+                    </tr> 
+                    <tr> 
+                        <td>
+                            <b>Login : </b>{client.login}
+                        </td>
+                    </tr> 
+                    <tr> 
+                        <td>
+                            <b>Mot de passe :</b> {client.password}
+                        </td>
+                    </tr>                               
+                </table>
             ))}
         </div>
     }
