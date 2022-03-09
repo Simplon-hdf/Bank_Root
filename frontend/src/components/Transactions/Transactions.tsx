@@ -1,21 +1,11 @@
 import React, {useEffect, useState} from "react";
-
-type transaction = {
-	transaction_id: number;
-	from_account_id: number;
-	to_account_id: number;
-	amount: number;
-	type: string;
-	initiated_by: number;
-	status_code: boolean;
-	createdAt: Date;
-	updatedAt: Date;
-};
+import {formatDate} from "../../Utilities/methods";
+import {typeTransaction} from "../../Utilities/types";
 
 // Affiche des transactions
 // "sans details"
 export default function Transactions() {
-	const [items, setItems] = useState<transaction[]>([]);
+	const [items, setItems] = useState<typeTransaction[]>([]);
 	const [error, setError] = useState(null);
 
 	useEffect(() => {
@@ -67,8 +57,8 @@ export default function Transactions() {
 								<td>{item.type}</td>
 								<td className="sideBorder">{item.initiated_by}</td>
 								<td>{item.status_code ? "actived" : "deactivated"}</td>
-								<td className="sideBorder">{item.createdAt}</td>
-								<td>{item.updatedAt}</td>
+								<td className="sideBorder">{formatDate(item.createdAt)}</td>
+								<td>{formatDate(item.updatedAt)}</td>
 							</tr>
 						))}
 					</tbody>
