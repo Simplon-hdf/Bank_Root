@@ -56,7 +56,6 @@ td {
 	border-top: 1px solid black;
 	padding: 5px;
 }
-.sideBorder {
-	border-left: 1px solid black;
+.borderRight {
 	border-right: 1px solid black;
 }
