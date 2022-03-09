@@ -53,7 +53,7 @@ export default function Transactions() {
 								<td className="borderRight">{item.transaction_id}</td>
 								<td className="borderRight">{item.from_account_id}</td>
 								<td className="borderRight">{item.to_account_id}</td>
-								<td className="borderRight">{item.amount}</td>
+								<td className="borderRight">{item.amount} €</td>
 								<td className="borderRight">{item.type}</td>
 								<td className="borderRight">{item.initiated_by}</td>
 								<td className="borderRight">{item.status_code ? "actived" : "deactivated"}</td>
