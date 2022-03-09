@@ -24,7 +24,7 @@ export default function Transactions() {
 	} else {
 		return (
 			<section>
-				<h3>Transactions</h3>
+				{/* <h3>Transactions</h3> */}
 
 				<table>
 					<thead>
@@ -35,29 +35,29 @@ export default function Transactions() {
 							</th>
 						</tr>
 						<tr>
-							<th>id</th>
-							<th className="sideBorder">from</th>
-							<th>to</th>
-							<th className="sideBorder">amount</th>
-							<th>type</th>
-							<th className="sideBorder">initiated by</th>
-							<th>status</th>
-							<th className="sideBorder">created at</th>
-							<th>updated at</th>
+							<th className="borderRight">id</th>
+							<th className="borderRight">from</th>
+							<th className="borderRight">to</th>
+							<th className="borderRight">amount</th>
+							<th className="borderRight">type</th>
+							<th className="borderRight">initiated by</th>
+							<th className="borderRight">status</th>
+							<th className="borderRight">created</th>
+							<th>last update</th>
 						</tr>
 					</thead>
 
 					<tbody>
 						{items.map((item) => (
 							<tr key={item.transaction_id}>
-								<td>{item.transaction_id}</td>
-								<td className="sideBorder">{item.from_account_id}</td>
-								<td>{item.to_account_id}</td>
-								<td className="sideBorder">{item.amount}</td>
-								<td>{item.type}</td>
-								<td className="sideBorder">{item.initiated_by}</td>
-								<td>{item.status_code ? "actived" : "deactivated"}</td>
-								<td className="sideBorder">{formatDate(item.createdAt)}</td>
+								<td className="borderRight">{item.transaction_id}</td>
+								<td className="borderRight">{item.from_account_id}</td>
+								<td className="borderRight">{item.to_account_id}</td>
+								<td className="borderRight">{item.amount} €</td>
+								<td className="borderRight">{item.type}</td>
+								<td className="borderRight">{item.initiated_by}</td>
+								<td className="borderRight">{item.status_code ? "actived" : "deactivated"}</td>
+								<td className="borderRight">{formatDate(item.createdAt)}</td>
 								<td>{formatDate(item.updatedAt)}</td>
 							</tr>
 						))}

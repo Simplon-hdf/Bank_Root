@@ -25,3 +25,14 @@ export type typeClient = {
 	createdAt: Date;
 	updatedAt: Date;
 };
+
+export type typeAccount = {
+	account_id: number;
+	client_id: number;
+	account_number: number;
+	account_balance: number;
+	type: boolean;
+	status_code: boolean;
+	createdAt: Date;
+	updatedAt: Date;
+};

@@ -27,32 +27,39 @@ export default function ClientDetail() {
 	} else {
 		return (
 			<div>
-				<h3> Clients </h3>
+				{/* <h3> Clients </h3> */}
 				<table>
 					<thead>
 						<tr>
-							<th>
+							{/* <th colSpan={10} style={{borderBottom: "1px solid black"}}> */}
+							<th colSpan={100} className="borderBot">
+								Clients
+							</th>
+						</tr>
+
+						<tr>
+							<th className="borderRight">
 								<b>Civilité :</b>
 							</th>
-							<th>
+							<th className="borderRight">
 								<b>Nom :</b>
 							</th>
-							<th>
+							<th className="borderRight">
 								<b>Prénom :</b>
 							</th>
-							<th>
+							<th className="borderRight">
 								<b>Email :</b>
 							</th>
-							<th>
+							<th className="borderRight">
 								<b>Adresse :</b>
 							</th>
-							<th>
+							<th className="borderRight">
 								<b>Téléphone :</b>
 							</th>
-							<th>
+							<th className="borderRight">
 								<b>Login :</b>
 							</th>
-							<th>
+							<th className="borderRight">
 								<b>Mot de passe :</b>
 							</th>
 						</tr>
@@ -60,15 +67,15 @@ export default function ClientDetail() {
 					<tbody>
 						{clients.map((client) => (
 							<tr key={client.client_id}>
-								<td>{client.title}</td>
+								<td className="borderRight">{client.title}</td>
 
-								<td>{client.name}</td>
-								<td>{client.surname}</td>
-								<td>{client.email}</td>
-								<td>{client.address}</td>
+								<td className="borderRight">{client.name}</td>
+								<td className="borderRight">{client.surname}</td>
+								<td className="borderRight">{client.email}</td>
+								<td className="borderRight">{client.address}</td>
 
-								<td>{client.telephone}</td>
-								<td>{client.login}</td>
+								<td className="borderRight">{client.telephone}</td>
+								<td className="borderRight">{client.login}</td>
 
 								<td>{client.password}</td>
 							</tr>
