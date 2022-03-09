@@ -45,7 +45,14 @@ export default function ClientDetail() {
         return <div>
             {clients.map((client) => (
                 <article key={client.client_id}>
+                    {client.title}
                     {client.name}
+                    {client.surname}
+                    {client.email}
+                    {client.address}
+                    {client.telephone}
+                    {client.login}
+                    {client.password}
                 </article>
             ))}
         </div>
