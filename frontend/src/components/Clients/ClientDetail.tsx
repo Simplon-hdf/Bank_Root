@@ -36,5 +36,18 @@ export default function ClientDetail() {
             (error) => setError(error));
     }, [])
 
-	return <section>ClientDetail</section>;
+
+    if(error) {
+        return <section>
+            ERROR: {JSON.stringify(error)}
+        </section>
+    } else {
+        return <div>
+            {clients.map((client) => (
+                <article key={client.client_id}>
+                    {client.name}
+                </article>
+            ))}
+        </div>
+    }
 }
