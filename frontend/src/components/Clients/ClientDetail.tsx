@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { isTemplateSpan } from "typescript";
 
 
 type cl = {
@@ -47,44 +48,44 @@ export default function ClientDetail() {
             {clients.map((client) => (
                 <table key={client.client_id}>
                     <tr>
-                        <td> 
-                            <b>Civilité :</b> {client.title}
-                        </td>
+                        <th><b>Civilité :</b></th>
+                        <th><b>Nom :</b></th>
+                        <th><b>Prénom :</b></th>
+                        <th><b>Email :</b></th>
+                        <th><b>Adresse :</b></th>
+                        <th><b>Téléphone :</b></th>
+                        <th><b>Login :</b></th>
+                        <th><b>Mot de passe :</b></th>
                     </tr>
-                    <tr> 
-                        <td>
-                            <b>Nom :</b> {client.name}
+                    <tr>
+                        <td> 
+                            {client.title}
                         </td>
-                    </tr>    
-                    <tr> 
+                    
                         <td>
-                            <b>Prénom :</b> {client.surname}
-                        </td>
-                    </tr> 
-                    <tr> 
+                            {client.name}
+                        </td>                 
                         <td>
-                            <b>Email :</b> {client.email}
-                        </td>
-                    </tr> 
-                    <tr> 
+                            {client.surname}
+                        </td>                  
                         <td>
-                            <b>Adresse :</b> {client.address}
-                        </td>
-                    </tr> 
-                    <tr> 
+                            {client.email}
+                        </td>                 
                         <td>
-                            <b>Téléphone :</b> {client.telephone}
+                            {client.address}
                         </td>
-                    </tr> 
-                    <tr> 
+                
                         <td>
-                            <b>Login : </b>{client.login}
-                        </td>
-                    </tr> 
-                    <tr> 
+                            {client.telephone}
+                        </td>                
                         <td>
-                            <b>Mot de passe :</b> {client.password}
+                            {client.login}
                         </td>
+                
+                        <td>
+                            {client.password}
+                        </td>
+                        
                     </tr>                               
                 </table>
             ))}
