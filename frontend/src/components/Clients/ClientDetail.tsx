@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { isTemplateSpan } from "typescript";
+import Clients from "./Clients";
 
 
 type cl = {
@@ -45,8 +46,7 @@ export default function ClientDetail() {
     } else {
         return <div>
             <h3> Clients </h3>
-            {clients.map((client) => (
-                <table key={client.client_id}>
+                <table>
                     <tr>
                         <th><b>Civilité :</b></th>
                         <th><b>Nom :</b></th>
@@ -57,6 +57,7 @@ export default function ClientDetail() {
                         <th><b>Login :</b></th>
                         <th><b>Mot de passe :</b></th>
                     </tr>
+                    {clients.map((client) => (
                     <tr>
                         <td> 
                             {client.title}
@@ -87,8 +88,8 @@ export default function ClientDetail() {
                         </td>
                         
                     </tr>                               
-                </table>
             ))}
+            </table>
         </div>
     }
 }
