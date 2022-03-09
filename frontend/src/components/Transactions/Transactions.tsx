@@ -29,37 +29,51 @@ export default function Transactions() {
 			);
 	}, []);
 
-	return (
-		<section>
-			<h3>Transactions</h3>
+	if (error) {
+		return <section>Error: {JSON.stringify(error)}</section>;
+	} else {
+		return (
+			<section>
+				<h3>Transactions</h3>
 
-			<table>
-				<tr>
-					<th>transaction_id</th>
-					<th>from_account_id</th>
-					<th>to_account_id</th>
-					<th>amount</th>
-					<th>type</th>
-					<th>initiated_by</th>
-					<th>status_code</th>
-					<th>createdAt</th>
-					<th>updatedAt</th>
-				</tr>
+				<table>
+					<thead>
+						<tr>
+							{/* <th colSpan={10} style={{borderBottom: "1px solid black"}}> */}
+							<th colSpan={10} className="borderBot">
+								Transactions
+							</th>
+						</tr>
+						<tr>
+							<th>id</th>
+							<th className="sideBorder">from</th>
+							<th>to</th>
+							<th className="sideBorder">amount</th>
+							<th>type</th>
+							<th className="sideBorder">initiated by</th>
+							<th>status</th>
+							<th className="sideBorder">created at</th>
+							<th>updated at</th>
+						</tr>
+					</thead>
 
-				{items.map((item) => (
-					<tr key={item.transaction_id}>
-						<td>{item.transaction_id}</td>
-						<td>{item.from_account_id}</td>
-						<td>{item.to_account_id}</td>
-						<td>{item.amount}</td>
-						<td>{item.type}</td>
-						<td>{item.initiated_by}</td>
-						<td>{item.status_code}</td>
-						<td>{item.createdAt}</td>
-						<td>{item.updatedAt}</td>
-					</tr>
-				))}
-			</table>
-		</section>
-	);
+					<tbody>
+						{items.map((item) => (
+							<tr key={item.transaction_id}>
+								<td>{item.transaction_id}</td>
+								<td className="sideBorder">{item.from_account_id}</td>
+								<td>{item.to_account_id}</td>
+								<td className="sideBorder">{item.amount}</td>
+								<td>{item.type}</td>
+								<td className="sideBorder">{item.initiated_by}</td>
+								<td>{item.status_code ? "actived" : "deactivated"}</td>
+								<td className="sideBorder">{item.createdAt}</td>
+								<td>{item.updatedAt}</td>
+							</tr>
+						))}
+					</tbody>
+				</table>
+			</section>
+		);
+	}
 }
