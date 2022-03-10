@@ -43,7 +43,7 @@ model Account {
 model Transaction {
   transaction_id      Int                   @id @default(autoincrement())
   from_account_id     Int
-  to_account_id       Int
+  to_account_id       Int?
   amount              Int
   type                String
   initiated_by        Int

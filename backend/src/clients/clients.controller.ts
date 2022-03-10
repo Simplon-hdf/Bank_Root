@@ -2,7 +2,7 @@ import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/commo
 import { ClientsService } from './clients.service';
 import { CreateClientDto } from './dto/create-client.dto';
 import { UpdateClientDto } from './dto/update-client.dto';
-
+import { PrismaService } from '../prisma.service'
 
 
 @Controller('clients')
@@ -11,26 +11,26 @@ export class ClientsController {
 
   @Post()
   create(@Body() createClientDto: CreateClientDto) {
-    return{message:(  this.clientsService.create(createClientDto))};
+    return this.clientsService.create(createClientDto);
   }
 
   @Get()
   findAll() {
-    return{message:(  this.clientsService.findAll())};
+    return this.clientsService.findAll();
   }
 
   @Get(':id')
   findOne(@Param('id') id: string) {
-    return{message:( this.clientsService.findOne(+id))};
+    return this.clientsService.findOne(+id);
   }
 
   @Patch(':id')
   update(@Param('id') id: string, @Body() updateClientDto: UpdateClientDto) {
-    return{message:( this.clientsService.update(+id, updateClientDto))};
+    return this.clientsService.update(+id, updateClientDto);
   }
 
   @Delete(':id')
-  remove(@Param('id') id: Number) {
-       return{message:( this.clientsService.remove(+id))};
+  remove(@Param('id') id: string) {
+    return this.clientsService.remove(+id);
   }
 }

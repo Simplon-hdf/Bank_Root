@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { CreateClientDto } from './dto/create-client.dto';
 import { UpdateClientDto } from './dto/update-client.dto';
-
+import { Prisma } from '@prisma/client';
 import { PrismaService } from  'src/prisma/prisma.service';
 
 @Injectable()
@@ -29,7 +29,6 @@ export class ClientsService {
   }
 
   remove(id: number) {
-
     return this.prismaService.client.delete({ where: { client_id: id }});
   }
 }
