@@ -80,6 +80,7 @@ td {
 	height: 100%;
 	width: 100%;
 	border-bottom: 2px solid transparent;
+	color: #dd3232;
 }
 .navItems:hover {
 	background-color: #a5b6c6;
