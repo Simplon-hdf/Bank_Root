@@ -25,12 +25,13 @@ export class TransactionsService {
     // console.log(':::::\n', transaction, '\n:::::');
 
     // Add detail(s) about transaction
-    for (let i = 0; i < 2; i++) {
+    const n = transaction.from_account_id ? 2 : 1;
+    for (let i = 0; i < n; i++) {
       const createDetailDto: CreateDetailDto = {
         transaction_id: transaction.transaction_id,
         account_id:
-          i === 0 ? transaction.from_account_id : transaction.to_account_id,
-        amount: i === 0 ? -transaction.amount : transaction.amount,
+          i === 0 ? transaction.to_account_id : transaction.from_account_id,
+        amount: i === 0 ? transaction.amount : -transaction.amount,
         type: transaction.type,
         status_code: transaction.status_code,
       };
@@ -46,7 +47,7 @@ export class TransactionsService {
           where: { account_id: detail.account_id },
         })
         .then((acc) => {
-          console.log('########', acc);
+          // console.log('########', acc);
           return this.prisma.account.update({
             where: { account_id: acc.account_id },
             data: {
