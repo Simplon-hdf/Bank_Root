@@ -1,8 +1,8 @@
-import React from "react";
 
-// Affichage detail d'un compte
-// la "balance", etc
-// les transactions du compte*
+import React, { useEffect, useState } from "react";
+ 
+
 export default function AccountDetail() {
-	return <section>AccountDetail</section>;
-}
+    
+	 
+} 
