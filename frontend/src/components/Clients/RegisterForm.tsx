@@ -1,3 +1,4 @@
+import { render } from '@testing-library/react';
 import React, { useState, useEffect } from 'react';
 
 export default function RegisterForm() {
@@ -10,7 +11,7 @@ export default function RegisterForm() {
     const [login, setLogin] = useState("");
     const [password, setPassword] = useState("");
 
-    function sendForm() {
+    function sendForm() {       
         if(
         !name ||
         !surname ||
@@ -20,11 +21,11 @@ export default function RegisterForm() {
         !login ||
         !password 
         ) {
-            // return "Veuillez emplir les champs";
+            alert("Veuillez remplir les champs !");
             console.log("Veuillez remplir les champs");
             ;
         } else {
-            console.log("Tous les champs sont remplis");
+            
             
         }
         
