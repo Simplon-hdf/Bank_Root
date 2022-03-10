@@ -11,15 +11,27 @@ export default function RegisterForm() {
     const [password, setPassword] = useState("");
 
     function sendForm() {
-        console.log(gender);       
-        console.log(name);
-        console.log(surname);
-        console.log(email);
-        console.log(address);
-        console.log(phone);
-        console.log(login);
-        console.log(password);
+        if(
+        !name ||
+        !surname ||
+        !email ||
+        !address ||
+        !phone ||
+        !login ||
+        !password 
+        ) {
+            // return "Veuillez emplir les champs";
+            console.log("Veuillez remplir les champs");
+            ;
+        } else {
+            console.log("Tous les champs sont remplis");
+            
+        }
+        
     }
+
+    
+
 
     return (
         <form>
