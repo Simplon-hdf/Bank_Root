@@ -42,7 +42,7 @@ model Account {
 
 model Transaction {
   transaction_id      Int                   @id @default(autoincrement())
-  from_account_id     Int
+  from_account_id     Int?
   to_account_id       Int
   amount              Int
   type                String
@@ -50,7 +50,7 @@ model Transaction {
   status_code         Boolean               @default(true)
   createdAt           DateTime              @default(now())
   updatedAt           DateTime              @updatedAt
-  account             Account               @relation(fields: [from_account_id], references: [account_id], onDelete: Cascade)
+  account             Account               @relation(fields: [to_account_id], references: [account_id], onDelete: Cascade)
   transaction_details Transaction_details[]
 }
 
