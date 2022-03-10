@@ -1,5 +1,6 @@
 import {get} from "http";
-import React, {useEffect, useState} from "react";
+import React, {useContext, useEffect, useState} from "react";
+import {AccountContext} from "../../App";
 import {getTransacType} from "../../Utilities/methods";
 import {typeAccount} from "../../Utilities/types";
 
@@ -7,7 +8,8 @@ export default function TransactionForm() {
 	const [transacType, setTransacType] = useState(getTransacType()[0]);
 	const [amount, setAmount] = useState(0);
 	const [showFromAcc, setShowFromAcc] = useState(false);
-	const [accounts, setAccounts] = useState<typeAccount[]>([]);
+	const accounts = React.useContext(AccountContext);
+	// const [accounts, setAccounts] = useState<typeAccount[]>([]);
 	const [toAccount, setToAccount] = useState(null);
 
 	// useEffect(() => {
