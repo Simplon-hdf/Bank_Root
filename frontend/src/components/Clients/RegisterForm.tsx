@@ -1,49 +1,45 @@
-import React, { Component } from 'react';
+import React, { useState, useEffect } from 'react';
 
-class RegisterForm extends Component {
-    constructor(props: string) {
-        super(props);
-        this.state = { value: '' };
+export default function RegisterForm() {
+    const [gender, setGender] = useState("Mr");
+    const [name, setName] = useState("");
+    const [surname, setSurname] = useState("");
+    const [email, setEmail] = useState("");
+    const [address, setAddress] = useState("");
+    const [phone, setPhone] = useState("");
+    const [login, setLogin] = useState("");
+    const [password, setPassword] = useState("");
 
-        this.handleChange = this.handleChange.bind(this);
-        this.handleSubmit = this.handleSubmit.bind(this);
+    function sendForm() {
+        console.log(gender);       
+        console.log(name);
+        console.log(surname);
+        console.log(email);
+        console.log(address);
+        console.log(phone);
+        console.log(login);
+        console.log(password);
     }
 
-    handleChange(e: React.ChangeEvent<HTMLInputElement>) {
-        this.setState({ value: e.target.value });
-    }
-
-    handleSubmit(e: React.MouseEvent<HTMLInputElement>) {
-        const url: string = "http//localhost/5000/clients";
-
-        const dataClients = [];
-
-        //     let getData = () => {
-        //         this.(url)
-        //             .then(res => dataClients.push(res.data))
-        //             .catch(err => console.log(err.data));
-        //     }
-    }
-
-
-
-
-    render() {
-        return (
-            <form>
-                <select>
-                    <option value="Mr">Monsieur</option>
-                    <option value="Mme">Madame</option>
-                </select>
-                <input type="text" placeholder='Nom'></input>
-                <input type="text" placeholder='Prénom'></input>
-                <input type="text" placeholder='Email'></input>
-                <input type="text" placeholder='Adresse'></input>
-                <input type="text" placeholder='Téléphone'></input>
-                <button type="submit">Envoyer</button>
-            </form>
-        );
-    }
+    return (
+        <form>
+            <select defaultValue="Mr" onChange={(e) => setGender(e.target.value)}>
+                <option value="Mr">Monsieur</option>
+                <option value="Mme">Madame</option>
+            </select>
+            <input type="text" placeholder='Nom' onChange={(e) => setName(e.target.value)}></input>
+            <input type="text" placeholder='Prénom' onChange={(e) => setSurname(e.target.value)}></input>
+            <input type="text" placeholder='Email' onChange={(e) => setEmail(e.target.value)}></input>
+            <input type="text" placeholder='Adresse' onChange={(e) => setAddress(e.target.value)}></input>
+            <input type="text" placeholder='Téléphone' onChange={(e) => setPhone(e.target.value)}></input>
+            <input type="text" placeholder='Login' onChange={(e) => setLogin(e.target.value)}></input>
+            <input type="password" placeholder='Mot de passe' onChange={(e) => setPassword(e.target.value)}></input>
+            <button type="button" onClick={sendForm}>Envoyer</button>
+        </form>
+    )
 }
 
-export default RegisterForm;
+
+
+
+
