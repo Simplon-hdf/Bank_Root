@@ -1,16 +1,20 @@
 import React from "react";
+import {Route, Routes} from "react-router";
 import "./App.css";
 import Accounts from "./components/Accounts/Accounts";
 import Clients from "./components/Clients/Clients";
+import Navbar from "./components/Navbar/Navbar";
 import Transactions from "./components/Transactions/Transactions";
 
 function App() {
 	return (
 		<section className="App">
-			"Admin" Panel:
-			<Clients />
-			<Accounts />
-			<Transactions />
+			<Navbar />
+			<Routes>
+				<Route path="/clients" element={<Clients />} />
+				<Route path="/accounts" element={<Accounts />} />
+				<Route path="/transactions" element={<Transactions />} />
+			</Routes>
 		</section>
 	);
 }

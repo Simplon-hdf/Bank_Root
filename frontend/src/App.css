@@ -59,3 +59,34 @@ td {
 .borderRight {
 	border-right: 1px solid black;
 }
+
+.navMenu {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	gap: 2px;
+
+	height: 40px;
+	width: 100vw;
+
+	list-style: none;
+	background-color: #e0e0e0;
+}
+.navItems {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+
+	height: 100%;
+	width: 100%;
+	border-bottom: 2px solid transparent;
+}
+.navItems:hover {
+	background-color: #a5b6c6;
+	border-bottom: 2px solid #dd3232;
+}
+.active {
+	background-color: #d6d4d4;
+	color: #dd3232;
+	border-bottom: 2px solid #dd3232;
+}
