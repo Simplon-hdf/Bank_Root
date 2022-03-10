@@ -23,7 +23,7 @@ model Client {
   type        Boolean   @default(false)
   status_code Boolean   @default(false)
   createdAt   DateTime  @default(now())
-  updatedAt   DateTime  @updatedAt
+  updatedAt   DateTime?  @updatedAt
   account     Account[]
 }
 
@@ -34,7 +34,7 @@ model Account {
   account_balance Int
   status_code     Boolean       @default(false)
   createdAt       DateTime      @default(now())
-  updatedAt       DateTime      @updatedAt
+  updatedAt       DateTime?      @updatedAt
   client          Client        @relation(fields: [client_id], references: [client_id], onDelete: Cascade)
   transaction     Transaction[]
 
@@ -49,7 +49,7 @@ model Transaction {
   initiated_by        Int
   status_code         Boolean               @default(true)
   createdAt           DateTime              @default(now())
-  updatedAt           DateTime              @updatedAt
+  updatedAt           DateTime?             @updatedAt
   account             Account               @relation(fields: [from_account_id], references: [account_id], onDelete: Cascade)
   transaction_details Transaction_details[]
 }
@@ -63,6 +63,6 @@ model Transaction_details {
   credit_date    DateTime    @default(now())
   status_code    Boolean     @default(true)
   createdAt      DateTime    @default(now())
-  updatedAt      DateTime    @updatedAt
+  updatedAt      DateTime?    @updatedAt
   transaction    Transaction @relation(fields: [transaction_id], references: [transaction_id], onDelete: Cascade)
 }
