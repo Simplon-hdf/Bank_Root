@@ -1,6 +1,7 @@
-import React, {useEffect, useState} from "react";
+import React, {useContext, useEffect, useState} from "react";
 import {formatDate} from "../../Utilities/methods";
 import {typeTransaction} from "../../Utilities/types";
+import TransactionForm from "./TransactionForm";
 
 // Affiche des transactions
 // "sans details"
@@ -25,6 +26,7 @@ export default function Transactions() {
 		return (
 			<section>
 				{/* <h3>Transactions</h3> */}
+				<TransactionForm />
 
 				<table>
 					<thead>

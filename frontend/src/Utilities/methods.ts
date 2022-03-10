@@ -17,3 +17,7 @@ export function getNavLinks() {
 		{page: "Transactions", path: "/transactions"},
 	];
 }
+
+export function getTransacType() {
+	return ["Debit", "Credit", "Transfer"];
+}
