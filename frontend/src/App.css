@@ -59,6 +59,11 @@ td {
 .borderRight {
 	border-right: 1px solid black;
 }
+/* .transRow:hover { */
+tbody > tr:hover {
+	background-color: #e2e2e2;
+	/* cursor: pointer; */
+}
 
 .navMenu {
 	display: flex;
