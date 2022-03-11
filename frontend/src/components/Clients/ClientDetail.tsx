@@ -39,28 +39,28 @@ export default function ClientDetail() {
 
 						<tr>
 							<th className="borderRight">
-								<b>Civilité :</b>
+								<b>Gender :</b>
 							</th>
 							<th className="borderRight">
-								<b>Nom :</b>
+								<b>Last Name:</b>
 							</th>
 							<th className="borderRight">
-								<b>Prénom :</b>
+								<b>First Name :</b>
 							</th>
 							<th className="borderRight">
 								<b>Email :</b>
 							</th>
 							<th className="borderRight">
-								<b>Adresse :</b>
+								<b>Adress :</b>
 							</th>
 							<th className="borderRight">
-								<b>Téléphone :</b>
+								<b>Phone :</b>
 							</th>
 							<th className="borderRight">
 								<b>Login :</b>
 							</th>
 							<th className="borderRight">
-								<b>Mot de passe :</b>
+								<b>Password :</b>
 							</th>
 						</tr>
 					</thead>

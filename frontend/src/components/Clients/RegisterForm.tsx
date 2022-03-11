@@ -39,8 +39,8 @@ export default function RegisterForm() {
                 <option value="Mr">Male</option>
                 <option value="Ms">Female</option>
             </select>
-            <input type="text" placeholder='First Name' onChange={(e) => setName(e.target.value)}></input>
-            <input type="text" placeholder='Last Name' onChange={(e) => setSurname(e.target.value)}></input>
+            <input type="text" placeholder='Last Name' onChange={(e) => setName(e.target.value)}></input>
+            <input type="text" placeholder='First Name' onChange={(e) => setSurname(e.target.value)}></input>
             <input type="text" placeholder='Email' onChange={(e) => setEmail(e.target.value)}></input>
             <input type="text" placeholder='Address' onChange={(e) => setAddress(e.target.value)}></input>
             <input type="text" placeholder='Phone' onChange={(e) => setPhone(e.target.value)}></input>
