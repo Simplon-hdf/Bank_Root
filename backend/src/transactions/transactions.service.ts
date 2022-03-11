@@ -13,6 +13,7 @@ import { Transaction, Transaction_details, Prisma } from '@prisma/client';
 @Injectable()
 export class TransactionsService {
   constructor(private prisma: PrismaService) {}
+
   /*
   async create(createTransactionDto: CreateTransactionDto) {
     // console.log(':::::\n', createTransactionDto, '\n:::::');
@@ -27,9 +28,24 @@ export class TransactionsService {
     const login_id = objJson1.initiated_by;
     const var6 = objJson1.status_code;
 
-    // console.log(':::::\n',objJson1, var1, '\n:::::');
-    return await this.prisma
-      .$executeRaw`CALL transfer(${login_id},${fromaccountid},${toaccountid},${amount},${type})`;
+    // console.log(':::::\n', objJson1, var1, '\n:::::');
+    console.log(':::::\n', objJson1, '\n:::::');
+
+    // const trId = await this.prisma
+    let trId = 0;
+    const t2 = await this.prisma
+      .$executeRaw`CALL transfer_transactions(${login_id},${fromaccountid},${toaccountid},${amount},${type}, ${0})`.then(
+      (x) => {
+        console.log(x);
+        trId = x;
+        return;
+      },
+    );
+
+    console.log(':::::-::', t2);
+    console.log(':::::::', trId);
+
+    return trId;
   }
 */
 
@@ -76,7 +92,6 @@ export class TransactionsService {
         });
       // console.log(':::::\n', account, '\n:::::');
     }
-
     return transaction;
   }
 

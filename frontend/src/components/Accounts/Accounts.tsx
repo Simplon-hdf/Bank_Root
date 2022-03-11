@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from "react";
 import {formatDate} from "../../Utilities/methods";
 import {typeAccount} from "../../Utilities/types";
+import AccountForm from "./AccountForm";
 
 // affichage de "tout" les comptes
 // on clique sur un compte on va vers son detail
@@ -19,6 +20,7 @@ export default function Accounts() {
 	} else {
 		return (
 			<section>
+				<AccountForm />
 				<table>
 					<thead>
 						<tr>
