@@ -24,8 +24,28 @@ export default function RegisterForm() {
             alert("Please fill in the fields!");
             ;
         } else {
-            
-            
+            const newClient = {
+                title : gender,
+                name : name,
+                surname : surname,
+                email : email,
+                address : address,
+                telephone : phone,
+                login : login,
+                password : password  
+            }
+            fetch("http://localhost:5000/clients", {
+                method : "POST",
+                headers : {"Content-Type" : "application/json"},
+                body : JSON.stringify(newClient),
+            })
+            // .then((res) => res.json())
+            // .then(
+            //     (result) => {
+            //         console.log(result);
+                    
+            //     }
+            // )                         
         }
         
     }
