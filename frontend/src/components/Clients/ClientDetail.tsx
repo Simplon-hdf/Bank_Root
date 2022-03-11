@@ -25,6 +25,18 @@ export default function ClientDetail() {
 			);
 	}, []);
 
+	function deleteClient(clientIdToDelete: number) {
+		fetch(`http://localhost:5000/clients/${clientIdToDelete}`, {
+			method: "DELETE"
+		})
+		.then((res) => res.json())
+		.then(
+			(result) => {
+				setClients(clients.filter((x) => x.client_id !== result.client_id ))
+			}
+		)
+	}
+
 	if (error) {
 		return <section>ERROR: {JSON.stringify(error)}</section>;
 	} else {
@@ -67,6 +79,9 @@ export default function ClientDetail() {
 							<th className="borderRight">
 								<b>Password :</b>
 							</th>
+							<th>
+								<b>Delete client</b>
+							</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -82,7 +97,8 @@ export default function ClientDetail() {
 								<td className="borderRight">{client.telephone}</td>
 								<td className="borderRight">{client.login}</td>
 
-								<td>{client.password}</td>
+								<td className="borderRight">{client.password}</td>
+								<td><button type="button" onClick={() => {deleteClient(client.client_id)}}>Delete</button></td>
 							</tr>
 						))}
 					</tbody>
