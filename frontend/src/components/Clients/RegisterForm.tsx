@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import {typeClient} from "../../Utilities/types";
 
 export default function RegisterForm() {
     const [gender, setGender] = useState("Mr");
@@ -9,6 +10,8 @@ export default function RegisterForm() {
     const [phone, setPhone] = useState("");
     const [login, setLogin] = useState("");
     const [password, setPassword] = useState("");
+
+    
 
     function sendForm() {
         if (
@@ -42,7 +45,10 @@ export default function RegisterForm() {
             .then(
                 (result) => {
                     console.log(result);
+                    let register = JSON.parse(JSON.stringify(newClient))
+                    register.unshift(result);
 
+                    
                 }
             ) 
             .then(() => {
