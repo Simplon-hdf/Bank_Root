@@ -3,8 +3,6 @@ import {formatDate} from "../../Utilities/methods";
 import {typeTransaction} from "../../Utilities/types";
 import TransactionForm from "./TransactionForm";
 
-// export const TransactionContext = React.createContext<typeTransaction[]>([]);
-// export const TransactionContext = React.createContext<typeTransaction[]>([]);
 export const TransactionContext = React.createContext<any>([[], () => {}]);
 
 // Affiche des transactions
@@ -29,15 +27,12 @@ export default function Transactions() {
 	} else {
 		return (
 			<TransactionContext.Provider value={[items, setItems]}>
-				{/* <TransactionContext.Provider value={items}> */}
 				<section>
-					{/* <h3>Transactions</h3> */}
 					<TransactionForm />
 
 					<table>
 						<thead>
 							<tr>
-								{/* <th colSpan={10} style={{borderBottom: "1px solid black"}}> */}
 								<th colSpan={10} className="borderBot">
 									Transactions
 								</th>

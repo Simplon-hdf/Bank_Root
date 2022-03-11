@@ -1,5 +1,4 @@
-import {get} from "http";
-import React, {useContext, useEffect, useState} from "react";
+import React, {useEffect, useState} from "react";
 import {getTransacType} from "../../Utilities/methods";
 import {typeAccount} from "../../Utilities/types";
 import {TransactionContext} from "./Transactions";
@@ -7,7 +6,6 @@ import {TransactionContext} from "./Transactions";
 export default function TransactionForm() {
 	const [transacType, setTransacType] = useState(getTransacType()[0]);
 	const [amount, setAmount] = useState(0);
-	const [showFromAcc, setShowFromAcc] = useState(false);
 	const [accounts, setAccounts] = useState<typeAccount[]>([]);
 	const [toAccount, setToAccount] = useState(-1);
 	const [fromAccount, setFromAccount] = useState(-1);
@@ -25,24 +23,12 @@ export default function TransactionForm() {
 			});
 	}, []);
 
-	// useEffect(() => {
-	// 	setShowFromAcc(transacType === "Debit" ? true : false);
-	// }, [transacType]);
-
-	function handleSelect() {
-		console.log("handling");
-	}
-
 	function handleSubmit() {
 		if (amount <= 0 || (transacType === "Transfer" && fromAccount === toAccount)) {
 			console.log("Error, verify amount or accounts, in case of transfer");
 			return;
 		}
-		// if(transacType === "Transfer" && toAccount === fromAccount)
 
-		// console.log(":::::::", amount);
-		// console.log(":::::::", fromAccount);
-		// console.log(":::::::", toAccount);
 		const newTransaction = {
 			from_account_id: fromAccount,
 			to_account_id: transacType === "Transfer" ? toAccount : null,
@@ -51,7 +37,7 @@ export default function TransactionForm() {
 			initiated_by: initiator ? -1 : fromAccount,
 			status_code: true,
 		};
-		console.log(":::::::", newTransaction);
+		// console.log(":::::::", newTransaction);
 
 		fetch(`http://localhost:5000/transactions`, {
 			method: "POST",
@@ -65,15 +51,10 @@ export default function TransactionForm() {
 				// If error obj
 				if (result.hasOwnProperty("code")) return;
 
-				// console.log(":: result:", result);
 				let arr = JSON.parse(JSON.stringify(transactions));
-				// arr.push(result);
 				arr.unshift(result); // Add items to the beginning
 
-				// console.log(":: arr:", arr);
 				setTransactions(arr);
-
-				// console.log(":: transac:", transactions);
 			});
 	}
 
@@ -93,7 +74,6 @@ export default function TransactionForm() {
 			<div>
 				<label htmlFor="fromAcc">{transacType === "Credit" ? "To: " : "From: "} </label>
 				<select name="fromAcc" onChange={(e) => setFromAccount(+e.target.value)}>
-					{/* <option>From Account</option> */}
 					{accounts.map((acc) => (
 						<option key={acc.account_id} value={acc.account_id}>
 							{acc.account_id}
@@ -105,7 +85,6 @@ export default function TransactionForm() {
 				<div>
 					<label htmlFor="toAcc">To: </label>
 					<select name="toAcc" onChange={(e) => setToAccount(+e.target.value)}>
-						{/* <option>To Account</option> */}
 						{accounts.map((acc) => (
 							<option key={acc.account_id} value={acc.account_id}>
 								{acc.account_id}
