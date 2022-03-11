@@ -1,5 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import {typeClient} from "../../Utilities/types";
+import { ClientContext } from './ClientDetail';
+
 
 export default function RegisterForm() {
     const [gender, setGender] = useState("Mr");
@@ -11,7 +13,7 @@ export default function RegisterForm() {
     const [login, setLogin] = useState("");
     const [password, setPassword] = useState("");
 
-    
+    const [clients, setClients] = React.useContext(ClientContext);
 
     function sendForm() {
         if (
@@ -44,10 +46,12 @@ export default function RegisterForm() {
             .then((res) => res.json())
             .then(
                 (result) => {
-                    console.log(result);
-                    let register = JSON.parse(JSON.stringify(newClient))
+                    if (result.hasOwnProperty("code")) return;
+
+                    let register = JSON.parse(JSON.stringify(clients))
                     register.unshift(result);
 
+                    setClients(register);
                     
                 }
             ) 

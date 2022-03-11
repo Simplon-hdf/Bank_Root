@@ -1,5 +1,8 @@
 import React, {useEffect, useState} from "react";
 import {typeClient} from "../../Utilities/types";
+import RegisterForm from "./RegisterForm";
+
+export const ClientContext = React.createContext<any>([[], () => {}])
 
 // Affichage detail d'un client
 // info, les comptes associés
@@ -26,8 +29,10 @@ export default function ClientDetail() {
 		return <section>ERROR: {JSON.stringify(error)}</section>;
 	} else {
 		return (
+			<ClientContext.Provider value={[clients, setClients]}>
 			<div>
 				{/* <h3> Clients </h3> */}
+				<RegisterForm />
 				<table>
 					<thead>
 						<tr>
@@ -83,6 +88,7 @@ export default function ClientDetail() {
 					</tbody>
 				</table>
 			</div>
+			</ClientContext.Provider>
 		);
 	}
 }
