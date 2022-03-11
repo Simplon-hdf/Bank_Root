@@ -13,6 +13,25 @@ import { Transaction, Transaction_details, Prisma } from '@prisma/client';
 @Injectable()
 export class TransactionsService {
   constructor(private prisma: PrismaService) {}
+  /*
+  async create(createTransactionDto: CreateTransactionDto) {
+    // console.log(':::::\n', createTransactionDto, '\n:::::');
+
+    var objJson1 = JSON.parse(JSON.stringify(createTransactionDto));
+    const fromaccountid = objJson1.from_account_id;
+    const toaccountid = objJson1.to_account_id;
+
+    const amount = objJson1.amount;
+    const type = objJson1.type;
+
+    const login_id = objJson1.initiated_by;
+    const var6 = objJson1.status_code;
+
+    // console.log(':::::\n',objJson1, var1, '\n:::::');
+    return await this.prisma
+      .$executeRaw`CALL transfer(${login_id},${fromaccountid},${toaccountid},${amount},${type})`;
+  }
+*/
 
   async create(
     createTransactionDto: CreateTransactionDto,
@@ -25,13 +44,13 @@ export class TransactionsService {
     // console.log(':::::\n', transaction, '\n:::::');
 
     // Add detail(s) about transaction
-    const n = transaction.from_account_id ? 2 : 1;
+    const n = transaction.to_account_id ? 2 : 1;
     for (let i = 0; i < n; i++) {
       const createDetailDto: CreateDetailDto = {
         transaction_id: transaction.transaction_id,
         account_id:
-          i === 0 ? transaction.to_account_id : transaction.from_account_id,
-        amount: i === 0 ? transaction.amount : -transaction.amount,
+          i === 0 ? transaction.from_account_id : transaction.to_account_id,
+        amount: transaction.amount, // temporary change, not setting neegative amount
         type: transaction.type,
         status_code: transaction.status_code,
       };
@@ -62,7 +81,12 @@ export class TransactionsService {
   }
 
   async findAll(): Promise<Transaction[]> {
-    return this.prisma.transaction.findMany();
+    return this.prisma.transaction.findMany({
+      orderBy: {
+        transaction_id: 'desc',
+      },
+      take: 10,
+    });
   }
 
   async findOne(id: number): Promise<Transaction> {
