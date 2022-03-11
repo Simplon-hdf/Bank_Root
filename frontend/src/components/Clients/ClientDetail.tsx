@@ -26,15 +26,17 @@ export default function ClientDetail() {
 	}, []);
 
 	function deleteClient(clientIdToDelete: number) {
-		fetch(`http://localhost:5000/clients/${clientIdToDelete}`, {
-			method: "DELETE"
-		})
-		.then((res) => res.json())
-		.then(
-			(result) => {
-				setClients(clients.filter((x) => x.client_id !== result.client_id ))
+		if(window.confirm('Do you want  to delete the client?')) {
+			fetch(`http://localhost:5000/clients/${clientIdToDelete}`, {
+				method: "DELETE"
+			})
+			.then((res) => res.json())
+			.then(
+				(result) => {
+					setClients(clients.filter((x) => x.client_id !== result.client_id ))
+				}
+				)
 			}
-		)
 	}
 
 	if (error) {
