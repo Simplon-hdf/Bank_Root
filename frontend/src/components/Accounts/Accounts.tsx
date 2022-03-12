@@ -48,7 +48,7 @@ export default function Accounts() {
 								<tr key={item.account_id}>
 									<td className="borderRight">{item.account_id}</td>
 									<td className="borderRight">{item.client_id}</td>
-									<td className="borderRight">{item.account_number}</td>
+									<td className="borderRight">#{item.account_number}</td>
 									<td className="borderRight">{item.account_balance} €</td>
 									<td className="borderRight">{item.status_code ? "actived" : "deactivated"}</td>
 									<td className="borderRight">{formatDate(item.createdAt)}</td>

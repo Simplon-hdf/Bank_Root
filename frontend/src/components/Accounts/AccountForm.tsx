@@ -6,8 +6,8 @@ import {AccountsContext} from "./Accounts";
 export default function AccountForm() {
 	const [clients, setClients] = useState<typeClient[]>([]);
 	const [clientId, setClientId] = useState(-1);
-	// const [accountNb, setAccountNb] = useState(-1);
-	const [balance, setBalance] = useState(0);
+	const [isActive, setIsActive] = useState(false);
+	const [balance, setBalance] = useState(100);
 	const [accounts, setAccounts] = useContext(AccountsContext);
 
 	useEffect(() => {
@@ -29,7 +29,7 @@ export default function AccountForm() {
 			client_id: clientId,
 			account_number: getRandNb(1000, 9999),
 			account_balance: balance,
-			status_code: true,
+			status_code: isActive,
 		};
 		// console.log(":::::::", newAccount);
 
@@ -79,6 +79,10 @@ export default function AccountForm() {
 						setBalance(+e.target.value);
 					}}
 				/>
+			</div>
+			<div>
+				<label htmlFor="activeAccount">Activate Account: </label>
+				<input type="checkbox" onChange={(e) => setIsActive(e.target.checked)} name="activeAccount" />
 			</div>
 
 			<button type="button" onClick={handleSubmit}>
