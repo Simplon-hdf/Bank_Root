@@ -11,7 +11,7 @@ export function formatDate(date: Date) {
 
 export function getNavLinks() {
 	return [
-		{page: "Home", path: "/"},
+		// {page: "Home", path: "/"},
 		{page: "Clients", path: "/clients"},
 		{page: "Accounts", path: "/accounts"},
 		{page: "Transactions", path: "/transactions"},
