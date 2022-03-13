@@ -54,6 +54,7 @@ export default function Accounts() {
 								<th className="borderRight">status</th>
 								<th className="borderRight">created</th>
 								<th className="borderRight">last update</th>
+								<th className="borderRight"></th>
 								<th></th>
 							</tr>
 						</thead>
@@ -63,15 +64,16 @@ export default function Accounts() {
 								<tr key={item.account_id}>
 									<td className="borderRight">{item.account_id}</td>
 									<td className="borderRight">{item.client_id}</td>
-									<td className="borderRight">
-										<NavLink to={`${item.account_id}`} className="navItems">
-											#{item.account_number}
-										</NavLink>
-									</td>
+									<td className="borderRight">#{item.account_number}</td>
 									<td className="borderRight">{item.account_balance} €</td>
 									<td className="borderRight">{item.status_code ? "actived" : "deactivated"}</td>
 									<td className="borderRight">{formatDate(item.createdAt)}</td>
 									<td className="borderRight">{formatDate(item.updatedAt)}</td>
+									<td className="borderRight">
+										<NavLink to={`${item.account_id}`} className="navItems">
+											View Account
+										</NavLink>
+									</td>
 									<td>
 										<button
 											type="button"
