@@ -1,6 +1,8 @@
 import React, {useEffect, useState} from "react";
+import {Link, NavLink, Routes, Route} from "react-router-dom";
 import {formatDate} from "../../Utilities/methods";
 import {typeAccount} from "../../Utilities/types";
+import AccountDetail from "./AccountDetail";
 import AccountForm from "./AccountForm";
 
 export const AccountsContext = React.createContext<any>([[], () => {}]);
@@ -61,7 +63,11 @@ export default function Accounts() {
 								<tr key={item.account_id}>
 									<td className="borderRight">{item.account_id}</td>
 									<td className="borderRight">{item.client_id}</td>
-									<td className="borderRight">#{item.account_number}</td>
+									<td className="borderRight">
+										<NavLink to={`${item.account_id}`} className="navItems">
+											#{item.account_number}
+										</NavLink>
+									</td>
 									<td className="borderRight">{item.account_balance} €</td>
 									<td className="borderRight">{item.status_code ? "actived" : "deactivated"}</td>
 									<td className="borderRight">{formatDate(item.createdAt)}</td>
