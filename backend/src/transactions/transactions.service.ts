@@ -14,85 +14,22 @@ import { Transaction, Transaction_details, Prisma } from '@prisma/client';
 export class TransactionsService {
   constructor(private prisma: PrismaService) {}
 
-  /*
-  async create(createTransactionDto: CreateTransactionDto) {
-    // console.log(':::::\n', createTransactionDto, '\n:::::');
+  async create(ct: CreateTransactionDto) {
+    console.log(':::::\n', ct, '\n:::::');
 
-    var objJson1 = JSON.parse(JSON.stringify(createTransactionDto));
-    const fromaccountid = objJson1.from_account_id;
-    const toaccountid = objJson1.to_account_id;
+    // typed to match return result
+    type procedureResult = {
+      transac_id: number;
+    };
+    const result: procedureResult = await this.prisma
+      .$queryRaw`CALL transfer_transactions(
+        ${ct.initiated_by},
+        ${ct.from_account_id},
+        ${ct.to_account_id},
+        ${ct.amount},
+        ${ct.type})`;
 
-    const amount = objJson1.amount;
-    const type = objJson1.type;
-
-    const login_id = objJson1.initiated_by;
-    const var6 = objJson1.status_code;
-
-    // console.log(':::::\n', objJson1, var1, '\n:::::');
-    console.log(':::::\n', objJson1, '\n:::::');
-
-    // const trId = await this.prisma
-    let trId = 0;
-    const t2 = await this.prisma
-      .$executeRaw`CALL transfer_transactions(${login_id},${fromaccountid},${toaccountid},${amount},${type}, ${0})`.then(
-      (x) => {
-        console.log(x);
-        trId = x;
-        return;
-      },
-    );
-
-    console.log(':::::-::', t2);
-    console.log(':::::::', trId);
-
-    return trId;
-  }
-*/
-
-  async create(
-    createTransactionDto: CreateTransactionDto,
-  ): Promise<Transaction> {
-    // console.log(':::::\n', createTransactionDto, '\n:::::');
-
-    const transaction = await this.prisma.transaction.create({
-      data: createTransactionDto,
-    });
-    // console.log(':::::\n', transaction, '\n:::::');
-
-    // Add detail(s) about transaction
-    const n = transaction.to_account_id ? 2 : 1;
-    for (let i = 0; i < n; i++) {
-      const createDetailDto: CreateDetailDto = {
-        transaction_id: transaction.transaction_id,
-        account_id:
-          i === 0 ? transaction.from_account_id : transaction.to_account_id,
-        amount: transaction.amount, // temporary change, not setting neegative amount
-        type: transaction.type,
-        status_code: transaction.status_code,
-      };
-
-      const detail = await this.prisma.transaction_details.create({
-        data: createDetailDto,
-      });
-      // console.log(':::::\n', detail, '\n:::::');
-
-      // Updating account balance
-      const account = await this.prisma.account
-        .findUnique({
-          where: { account_id: detail.account_id },
-        })
-        .then((acc) => {
-          // console.log('########', acc);
-          return this.prisma.account.update({
-            where: { account_id: acc.account_id },
-            data: {
-              account_balance: acc.account_balance + detail.amount,
-            },
-          });
-        });
-      // console.log(':::::\n', account, '\n:::::');
-    }
-    return transaction;
+    return this.findOne(result[0].transac_id);
   }
 
   async findAll(): Promise<Transaction[]> {
