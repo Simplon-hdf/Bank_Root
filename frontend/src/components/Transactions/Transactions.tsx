@@ -22,6 +22,18 @@ export default function Transactions() {
 			);
 	}, []);
 
+	function deleteTransaction(transacIdToDelete: number) {
+		if (window.confirm("Confirm deletion ?")) {
+			fetch(`http://localhost:5000/transactions/${transacIdToDelete}`, {
+				method: "DELETE",
+			})
+				.then((res) => res.json())
+				.then((result) => {
+					setItems(items.filter((x) => x.transaction_id !== result.transaction_id));
+				});
+		}
+	}
+
 	if (error) {
 		return <section>Error: {JSON.stringify(error)}</section>;
 	} else {
@@ -46,7 +58,8 @@ export default function Transactions() {
 								<th className="borderRight">initiated by</th>
 								<th className="borderRight">status</th>
 								<th className="borderRight">created</th>
-								<th>last update</th>
+								<th className="borderRight">last update</th>
+								<th></th>
 							</tr>
 						</thead>
 
@@ -61,7 +74,17 @@ export default function Transactions() {
 									<td className="borderRight">{item.initiated_by}</td>
 									<td className="borderRight">{item.status_code ? "actived" : "deactivated"}</td>
 									<td className="borderRight">{formatDate(item.createdAt)}</td>
-									<td>{formatDate(item.updatedAt)}</td>
+									<td className="borderRight">{formatDate(item.updatedAt)}</td>
+									<td>
+										<button
+											type="button"
+											onClick={() => {
+												deleteTransaction(item.transaction_id);
+											}}
+										>
+											Delete
+										</button>
+									</td>
 								</tr>
 							))}
 						</tbody>

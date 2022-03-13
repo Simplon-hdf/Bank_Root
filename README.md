@@ -25,21 +25,21 @@ gestion bancaire à vos clients (dépôts, virements, etc
 Une API fonctionnelle doit être fournie avec la possibilité
 que :
 
--  Chaque client corresponde un compte avec un
-   numéro unique (one to many)
--  Chaque compte peut être débiteur ou créditeur
--  Chaque compte peut faire des retraits ou dépôts
--  Des transactions peuvent être effectuer entre
-   tous les comptes via un formulaire, les montants
-   doivent être correctement réaffectés.
--  Un dashboard permet de voir le listings de tous
-   les comptes avec leur soldes
--  Chaque compte doit avoir une page avec les
-   transactions
+- Chaque client corresponde un compte avec un
+  numéro unique (one to many)
+- Chaque compte peut être débiteur ou créditeur
+- Chaque compte peut faire des retraits ou dépôts
+- Des transactions peuvent être effectuer entre
+  tous les comptes via un formulaire, les montants
+  doivent être correctement réaffectés.
+- Un dashboard permet de voir le listings de tous
+  les comptes avec leur soldes
+- Chaque compte doit avoir une page avec les
+  transactions
 
 ## Technos utilisées :
 
--  Framework: NestJS
--  DB : PostgreSQL
--  ORM: Prisma
--  Template Engine: à décider
+- Framework: NestJS
+- DB : PostgreSQL
+- ORM: Prisma
+- Front: React
