@@ -17,6 +17,18 @@ export default function Accounts() {
 			.then((result) => setItems(result));
 	}, []);
 
+	function deleteAccount(accountIdToDelete: number) {
+		if (window.confirm("Confirm deletion ?")) {
+			fetch(`http://localhost:5000/accounts/${accountIdToDelete}`, {
+				method: "DELETE",
+			})
+				.then((res) => res.json())
+				.then((result) => {
+					setItems(items.filter((x) => x.account_id !== result.account_id));
+				});
+		}
+	}
+
 	if (error) {
 		return <section>Error: {JSON.stringify(error)}</section>;
 	} else {
@@ -39,7 +51,8 @@ export default function Accounts() {
 								<th className="borderRight">account balance</th>
 								<th className="borderRight">status</th>
 								<th className="borderRight">created</th>
-								<th>last update</th>
+								<th className="borderRight">last update</th>
+								<th></th>
 							</tr>
 						</thead>
 
@@ -52,7 +65,17 @@ export default function Accounts() {
 									<td className="borderRight">{item.account_balance} €</td>
 									<td className="borderRight">{item.status_code ? "actived" : "deactivated"}</td>
 									<td className="borderRight">{formatDate(item.createdAt)}</td>
-									<td>{formatDate(item.updatedAt)}</td>
+									<td className="borderRight">{formatDate(item.updatedAt)}</td>
+									<td>
+										<button
+											type="button"
+											onClick={() => {
+												deleteAccount(item.account_id);
+											}}
+										>
+											Delete
+										</button>
+									</td>
 								</tr>
 							))}
 						</tbody>
