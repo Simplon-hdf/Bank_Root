@@ -1,9 +1,16 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
+import {
+  Controller,
+  Get,
+  Post,
+  Body,
+  Patch,
+  Param,
+  Delete,
+} from '@nestjs/common';
 import { ClientsService } from './clients.service';
 import { CreateClientDto } from './dto/create-client.dto';
 import { UpdateClientDto } from './dto/update-client.dto';
-import { PrismaService } from '../prisma.service'
-
+import { PrismaService } from '../prisma.service';
 
 @Controller('clients')
 export class ClientsController {
@@ -22,6 +29,11 @@ export class ClientsController {
   @Get(':id')
   findOne(@Param('id') id: string) {
     return this.clientsService.findOne(+id);
+  }
+
+  @Get(':id/details')
+  findOneDetails(@Param('id') id: string) {
+    return this.clientsService.findOneDetails(+id);
   }
 
   @Patch(':id')

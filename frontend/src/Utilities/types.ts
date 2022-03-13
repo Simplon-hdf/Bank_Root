@@ -10,6 +10,18 @@ export type typeTransaction = {
 	updatedAt: Date;
 };
 
+export type typeTransactionDetails = {
+	id: number;
+	transaction_id: number;
+	account_id: number;
+	amount: number;
+	type: string;
+	credit_date: Date;
+	status_code: boolean;
+	createdAt: Date;
+	updatedAt: Date;
+};
+
 export type typeClient = {
 	client_id: number;
 	title: string;

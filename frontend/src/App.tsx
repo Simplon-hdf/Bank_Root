@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from "react";
 import {Route, Routes} from "react-router";
 import "./App.css";
+import AccountDetail from "./components/Accounts/AccountDetail";
 import Accounts from "./components/Accounts/Accounts";
 import Clients from "./components/Clients/Clients";
 import Home from "./components/Home/Home";
@@ -15,6 +16,7 @@ function App() {
 				<Route path="/" element={<Home />} />
 				<Route path="/clients" element={<Clients />} />
 				<Route path="/accounts" element={<Accounts />} />
+				<Route path="/accounts/:accountID" element={<AccountDetail />} />
 				<Route path="/transactions" element={<Transactions />} />
 			</Routes>
 		</section>

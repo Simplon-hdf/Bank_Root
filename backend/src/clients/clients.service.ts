@@ -6,11 +6,12 @@ import { PrismaService } from 'src/prisma/prisma.service';
 
 @Injectable()
 export class ClientsService {
-  constructor(private prismaService: PrismaService) { }
+  constructor(private prismaService: PrismaService) {}
 
   async create(createClientDto: CreateClientDto) {
-
-    const result = await this.prismaService.client.create({ data: createClientDto })
+    const result = await this.prismaService.client.create({
+      data: createClientDto,
+    });
 
     return result;
   }
@@ -19,17 +20,24 @@ export class ClientsService {
     return this.prismaService.client.findMany({
       orderBy: {
         client_id: 'desc',
-      }, take: 10
-    })
-
+      },
+      take: 10,
+    });
   }
 
   findOne(id: number) {
     return this.prismaService.client.findUnique({ where: { client_id: id } });
   }
 
+  findOneDetails(id: number) {
+    return this.prismaService.account.findMany({ where: { client_id: id } });
+  }
+
   update(id: number, updateClientDto: UpdateClientDto) {
-    return this.prismaService.client.update({ data: updateClientDto, where: { client_id: id } })
+    return this.prismaService.client.update({
+      data: updateClientDto,
+      where: { client_id: id },
+    });
   }
 
   remove(id: number) {

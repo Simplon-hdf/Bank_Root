@@ -29,6 +29,12 @@ export class AccountsService {
     return this.prismaService.account.findUnique({ where: { account_id: id } });
   }
 
+  findOneDetails(id: number) {
+    return this.prismaService.transaction_details.findMany({
+      where: { account_id: id },
+    });
+  }
+
   update(id: number, updateAccountDto: UpdateAccountDto) {
     return this.prismaService.account.update({
       data: updateAccountDto,
