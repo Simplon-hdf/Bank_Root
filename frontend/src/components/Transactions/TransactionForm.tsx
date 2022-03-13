@@ -32,9 +32,9 @@ export default function TransactionForm() {
 		const clientInitiator = accounts.filter((x) => x.account_id === fromAccount)[0];
 		const newTransaction = {
 			from_account_id: fromAccount,
-			to_account_id: transacType === "Transfer" ? toAccount : null,
+			to_account_id: transacType === "Transfer" ? toAccount : -1,
 			amount: amount,
-			type: transacType,
+			type: transacType.toLowerCase(),
 			initiated_by: initiator ? -1 : clientInitiator.client_id,
 			status_code: true,
 		};
