@@ -75,4 +75,4 @@ AS $BODY$
 $BODY$;
 
 ALTER PROCEDURE public.transfer_transactions(integer, integer, integer, integer, text, integer)
-    OWNER TO xac;
+    OWNER TO postgres;
